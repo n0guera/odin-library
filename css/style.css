@@ -37,11 +37,15 @@ h1 {
   border: 2px white solid;
 }
 
+#library ul {
+  list-style: none;
+  padding: 0;
+}
+
 .book {
-  display: flex;
-  width: auto;
-  height: 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   color: white;
-  justify-content: space-between;
   align-items: center;
+  justify-items: center;
 }
