@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
 
+@font-face {
+  font-family: Norse-Bold;
+  src: url(../font/Norse-Bold.otf);
+}
+
 body {
   margin: 0;
   padding: 0;
