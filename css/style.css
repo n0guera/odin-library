@@ -39,9 +39,9 @@ h1 {
 
 .book {
   display: flex;
-  width: 64px;
+  width: auto;
   height: 64px;
   color: white;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
