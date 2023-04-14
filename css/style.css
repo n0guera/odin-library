@@ -32,6 +32,17 @@ h1 {
   margin: 0 8px;
 }
 
+#new-book {
+  color: white;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 8px 32px;
+  margin: 8px;
+}
+
 #library {
   width: 30vw;
   border: 2px white solid;
@@ -44,7 +55,7 @@ h1 {
 }
 
 .book,
-.column-headers {
+#column-headers {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   color: white;
