@@ -1,7 +1,48 @@
 let myLibrary = [];
 
+const bookList = document.querySelector('#book-container');
 const newBookForm = document.querySelector('#new-book-form');
 const bookForm = document.querySelector('#book-form');
+
+bookForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  let title = document.querySelector('#title').value;
+  let author = document.querySelector('#author').value;
+  let pages = document.querySelector('#pages').value;
+  let read = document.querySelector('#read').checked;
+
+  let newBook = new Book(title, author, pages, read);
+
+  myLibrary.push(newBook);
+  showBooks();
+  bookForm.reset();
+});
+
+function showBooks() {
+  myLibrary.forEach((newBook) => {
+    const li = document.createElement('li');
+    li.classList.add('book');
+
+    let title = document.createElement('h5');
+    title.textContent = `${newBook.title}`;
+    li.appendChild(title);
+
+    let author = document.createElement('p');
+    author.textContent = `${newBook.author}`;
+    li.appendChild(author);
+
+    let pages = document.createElement('p');
+    pages.textContent = `${newBook.pages}`;
+    li.appendChild(pages);
+
+    let read = document.createElement('p');
+    read.textContent = `${newBook.read}`;
+    li.appendChild(read);
+
+    bookList.appendChild(li);
+  });
+}
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -9,16 +50,3 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
 }
-
-bookForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const title = document.querySelector('#title').value;
-  const author = document.querySelector('#author').value;
-  const pages = document.querySelector('#pages').value;
-  const read = document.querySelector('#read').checked;
-
-  const book = new Book(title, author, pages, read);
-
-  myLibrary.push(book);
-});
