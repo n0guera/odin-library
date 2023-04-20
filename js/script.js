@@ -30,21 +30,23 @@ function showBooks() {
     const li = document.createElement('li');
     li.classList.add('book');
 
-    let title = document.createElement('h5');
-    title.textContent = `${newBook.title}`;
-    li.appendChild(title);
+    let bookTitle = document.createElement('h5');
+    bookTitle.textContent = `${newBook.title}`;
+    li.appendChild(bookTitle);
 
-    let author = document.createElement('p');
-    author.textContent = `${newBook.author}`;
-    li.appendChild(author);
+    let bookAuthor = document.createElement('p');
+    bookAuthor.textContent = `${newBook.author}`;
+    li.appendChild(bookAuthor);
 
-    let pages = document.createElement('p');
-    pages.textContent = `${newBook.pages}`;
-    li.appendChild(pages);
+    let bookPages = document.createElement('p');
+    bookPages.textContent = `${newBook.pages}`;
+    li.appendChild(bookPages);
 
-    let read = document.createElement('p');
-    read.textContent = `${newBook.read}`;
-    li.appendChild(read);
+    let bookRead = document.createElement('p');
+    newBook.read
+      ? (bookRead.textContent = 'Read')
+      : (bookRead.textContent = 'Not read');
+    li.appendChild(bookRead);
 
     bookList.appendChild(li);
   });
