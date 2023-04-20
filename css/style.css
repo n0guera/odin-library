@@ -71,6 +71,10 @@ button {
   justify-items: center;
 }
 
+#new-book-form {
+  display: none;
+}
+
 #book-form label {
   font-weight: bold;
 }

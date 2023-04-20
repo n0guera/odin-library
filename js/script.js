@@ -1,8 +1,13 @@
 let myLibrary = [];
 
+const newBookButton = document.querySelector('#new-book-button');
 const bookList = document.querySelector('#book-container');
 const newBookForm = document.querySelector('#new-book-form');
 const bookForm = document.querySelector('#book-form');
+
+newBookButton.addEventListener('click', function () {
+  newBookForm.style.cssText = 'display: block;';
+});
 
 bookForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -17,6 +22,7 @@ bookForm.addEventListener('submit', (e) => {
   myLibrary.push(newBook);
   showBooks();
   bookForm.reset();
+  newBookForm.style.cssText = 'display: none;';
 });
 
 function showBooks() {
