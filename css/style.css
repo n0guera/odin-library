@@ -54,6 +54,7 @@ button {
 #library {
   width: 30vw;
   border: 2px white solid;
+  margin: 8px;
 }
 
 #library ul {
@@ -69,6 +70,7 @@ button {
   color: white;
   align-items: center;
   justify-items: center;
+  padding: 4px;
 }
 
 #new-book-form {
