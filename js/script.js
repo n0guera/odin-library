@@ -26,7 +26,7 @@ bookForm.addEventListener('submit', (e) => {
 });
 
 function showBooks() {
-  myLibrary.forEach((newBook) => {
+  myLibrary.forEach((newBook, index) => {
     const li = document.createElement('li');
     li.classList.add('book');
 
@@ -48,8 +48,20 @@ function showBooks() {
       : (bookRead.textContent = 'Not read');
     li.appendChild(bookRead);
 
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'x';
+    removeButton.addEventListener('click', () => removeBook(index));
+    li.appendChild(removeButton);
+
     bookList.appendChild(li);
   });
+}
+
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  const bookElements = document.querySelectorAll('.book');
+  bookElements[index].remove();
+  showBooks();
 }
 
 function Book(title, author, pages, read) {
