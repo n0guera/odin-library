@@ -30,7 +30,7 @@ function showBooks() {
     const li = document.createElement('li');
     li.classList.add('book');
 
-    let bookTitle = document.createElement('h5');
+    let bookTitle = document.createElement('h4');
     bookTitle.textContent = `${newBook.title}`;
     li.appendChild(bookTitle);
 
