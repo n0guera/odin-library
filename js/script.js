@@ -1,66 +1,68 @@
 let myLibrary = [];
 
-const newBookButton = document.querySelector('#new-book-button');
+const newBookBtn = document.querySelector('#new-book-button');
 const bookList = document.querySelector('#book-container');
 const newBookForm = document.querySelector('#new-book-form');
 const bookForm = document.querySelector('#book-form');
 
-newBookButton.addEventListener('click', function () {
-  newBookForm.style.cssText = 'display: block;';
+newBookBtn.addEventListener('click', function () {
+  newBookForm.style.display = 'block';
 });
 
 bookForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  addBookToLibrary();
+  bookForm.reset();
+  newBookForm.style.display = 'none';
+  console.log(myLibrary);
+});
 
+function showBooks() {
+  bookList.textContent = '';
+  for (let i = 0; i < myLibrary.length; i++) {
+    const li = document.createElement('li');
+    li.classList.add('book');
+    bookList.appendChild(li);
+
+    let bookTitle = document.createElement('h4');
+    bookTitle.textContent = myLibrary[i].title;
+    li.appendChild(bookTitle);
+
+    let bookAuthor = document.createElement('p');
+    bookAuthor.textContent = myLibrary[i].author;
+    li.appendChild(bookAuthor);
+
+    let bookPages = document.createElement('p');
+    bookPages.textContent = myLibrary[i].pages;
+    li.appendChild(bookPages);
+
+    let bookRead = document.createElement('p');
+    myLibrary[i].read
+      ? (bookRead.textContent = 'Read')
+      : (bookRead.textContent = 'Not read');
+    li.appendChild(bookRead);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'x';
+    removeBtn.addEventListener('click', () => removeBook(i));
+    li.appendChild(removeBtn);
+  }
+}
+
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  showBooks();
+  console.log(myLibrary);
+}
+
+function addBookToLibrary() {
   let title = document.querySelector('#title').value;
   let author = document.querySelector('#author').value;
   let pages = document.querySelector('#pages').value;
   let read = document.querySelector('#read').checked;
 
-  let newBook = new Book(title, author, pages, read);
-
+  const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
-  showBooks();
-  bookForm.reset();
-  newBookForm.style.cssText = 'display: none;';
-});
-
-function showBooks() {
-  myLibrary.forEach((newBook, index) => {
-    const li = document.createElement('li');
-    li.classList.add('book');
-
-    let bookTitle = document.createElement('h4');
-    bookTitle.textContent = `${newBook.title}`;
-    li.appendChild(bookTitle);
-
-    let bookAuthor = document.createElement('p');
-    bookAuthor.textContent = `${newBook.author}`;
-    li.appendChild(bookAuthor);
-
-    let bookPages = document.createElement('p');
-    bookPages.textContent = `${newBook.pages}`;
-    li.appendChild(bookPages);
-
-    let bookRead = document.createElement('p');
-    newBook.read
-      ? (bookRead.textContent = 'Read')
-      : (bookRead.textContent = 'Not read');
-    li.appendChild(bookRead);
-
-    const removeButton = document.createElement('button');
-    removeButton.textContent = 'x';
-    removeButton.addEventListener('click', () => removeBook(index));
-    li.appendChild(removeButton);
-
-    bookList.appendChild(li);
-  });
-}
-
-function removeBook(index) {
-  myLibrary.splice(index, 1);
-  const bookElements = document.querySelectorAll('.book');
-  bookElements[index].remove();
   showBooks();
 }
 
