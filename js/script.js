@@ -14,7 +14,6 @@ bookForm.addEventListener('submit', (e) => {
   addBookToLibrary();
   bookForm.reset();
   newBookForm.style.display = 'none';
-  console.log(myLibrary);
 });
 
 function showBooks() {
@@ -52,7 +51,6 @@ function showBooks() {
 function removeBook(index) {
   myLibrary.splice(index, 1);
   showBooks();
-  console.log(myLibrary);
 }
 
 function addBookToLibrary() {
